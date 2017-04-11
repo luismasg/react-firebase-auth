@@ -1,6 +1,6 @@
 import firebase from 'firebase';
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { View, ToastAndroid } from 'react-native';
 import { Header, Button, CardSection, Spinner } from './components/common';
 import LoginForm from './components/LoginForm';
 
@@ -19,7 +19,17 @@ class App extends Component {
         firebase.auth().onAuthStateChanged((user) => {
             if (user) {
                 this.setState({ loggedIn: true });
+                ToastAndroid.showWithGravity(
+                'User Logged In',
+                ToastAndroid.SHORT,
+                ToastAndroid.TOP,
+            );
             } else {
+                ToastAndroid.showWithGravity(
+                'User has Logged out',
+                ToastAndroid.SHORT,
+                ToastAndroid.CENTER,
+            );
                 this.setState({ loggedIn: false });
             }
         });
@@ -46,6 +56,7 @@ class App extends Component {
             <View>
                 <Header headerText="Authentication" />
                 {this.renderContent()}
+
             </View>
         );
     }
