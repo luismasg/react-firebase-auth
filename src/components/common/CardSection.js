@@ -1,16 +1,16 @@
 import React from 'react';
 import { View } from 'react-native';
 
-const CardSection = ({ children }) => {
-    return (
-        <View style={style.containerStyle}>
-            {children}
-        </View>
-    );
+const CardSection = (props) => {
+  return (
+    <View style={styles.containerStyle}>
+      {props.children}
+    </View>
+  );
 };
 
-const style = {
-containerStyle: {
+const styles = {
+  containerStyle: {
     borderBottomWidth: 1,
     padding: 5,
     backgroundColor: '#fff',
@@ -18,7 +18,7 @@ containerStyle: {
     flexDirection: 'row',
     borderColor: '#ddd',
     position: 'relative'
+  }
+};
 
-}
- };
-export {CardSection};
+export { CardSection };
